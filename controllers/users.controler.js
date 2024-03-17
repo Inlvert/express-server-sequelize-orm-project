@@ -12,7 +12,7 @@ module.exports.createUser = async (req, res, next) => {
 
     console.log(user);
 
-    res.status(201).send(user);
+    res.status(201).send({ data: user });
   } catch (error) {
     next(error);
   }
@@ -25,7 +25,7 @@ module.exports.getUsers = async (req, res, next) => {
 
     console.log(users);
 
-    res.send(users);
+    res.send({ data: users });
 
     //SELECT fullName FROM users
 
@@ -61,7 +61,7 @@ module.exports.getUser = async (req, res, next) => {
 
     console.log(user);
 
-    res.send(user);
+    res.send({ data: user });
   } catch (error) {
     next(error);
   }
@@ -89,7 +89,6 @@ module.exports.getUser = async (req, res, next) => {
 //   }
 // };
 
-
 module.exports.deleteUserInstance = async (req, res, next) => {
   try {
     const {
@@ -102,7 +101,7 @@ module.exports.deleteUserInstance = async (req, res, next) => {
 
     console.log(user);
 
-    res.send(user);
+    res.send({ data: user });
   } catch (error) {
     next(error);
   }
@@ -117,7 +116,7 @@ module.exports.updateUser = async (req, res, next) => {
 
     // const [updatedRows, [user]] = await User.update(body, {
     //   where: {
-    //     id: userId, 
+    //     id: userId,
     //   },
     //   returning: true
     // });
@@ -126,13 +125,12 @@ module.exports.updateUser = async (req, res, next) => {
 
     const user = await User.findByPk(userId);
 
-    const updateUser = await user.update(body)
+    const updateUser = await user.update(body);
 
     console.log(updateUser);
 
-    res.send(updateUser);
-
+    res.send({ data: updateUser });
   } catch (error) {
     next(error);
   }
-}
+};
