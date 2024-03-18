@@ -15,41 +15,36 @@ module.exports = (sequelize, DataTypes) => {
   }
   Car.init({
     model: {
-      type: DataTypes.STRING(10),
-      allowNull: false,
-    },
-    yearProdaction: {
-      type: DataTypes.DATEONLY,
-      field: "year_prodaction",
-      allowNull: false
-    },
-    manufacturer: {
       type: DataTypes.STRING,
       allowNull: false
     },
+    year: {
+      type: DataTypes.DATEONLY
+    },
+    manufacturer: {
+      type: DataTypes.STRING
+    },
     km: {
-      type: DataTypes.DECIMAL(4, 2),
-      defaultValue: 0,
+      type: DataTypes.DECIMAL(7, 2),
       allowNull: false,
+      defaultValue: 0,
       validate: {
         isNumeric: true,
         min: 0,
       } 
     },
     color: {
-      type: DataTypes.STRING,
-      defaultValue: "white"
+      type: DataTypes.STRING
     },
-    isRightSteering: {
+    isLeft: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
+      field: "is_left"
     }
   }, {
     sequelize,
     modelName: 'Car',
     underscored: true,
-    tableName: 'cars',
+    tableName: "cars"
   });
   return Car;
 };

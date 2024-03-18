@@ -10,32 +10,26 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       model: {
-        type: Sequelize.STRING(10),
-        allowNull: false,
-      },
-      yearProdaction: {
-        type: Sequelize.DATEONLY,
-        field: "year_prodaction",
+        type: Sequelize.STRING,
         allowNull: false
+      },
+      year: {
+        type: Sequelize.DATEONLY
       },
       manufacturer: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       km: {
-        type: Sequelize.DECIMAL(4, 2),
-        defaultValue: 0,
-        allowNull: false
-
+        type: Sequelize.DECIMAL(7, 2),
+        allowNull: false,
+        defaultValue: 0
       },
       color: {
-        type: Sequelize.STRING,
-        defaultValue: "white"
+        type: Sequelize.STRING
       },
-      isRightSteering: {
+      isLeft: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
+        field: "is_left"
       },
       createdAt: {
         allowNull: false,
@@ -45,7 +39,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        filed: "update_at"
+        field: "updated_at"
       }
     });
   },

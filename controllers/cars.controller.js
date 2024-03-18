@@ -1,4 +1,4 @@
-const { Car, Sequelize } = require("../models");
+const { Car } = require("../models");
 
 module.exports.createCar = async (req, res, next) => {
   try {
@@ -7,7 +7,9 @@ module.exports.createCar = async (req, res, next) => {
     const car = await Car.create(body);
 
     console.log(car);
-    res.status(201), send({ data: car });
+
+    res.send(car);
+    
   } catch (error) {
     next(error);
   }
