@@ -21,10 +21,14 @@ module.exports.createUser = async (req, res, next) => {
 
 module.exports.getUsers = async (req, res, next) => {
   try {
+    const {pagination : {limit, offset}} = req;
     //SELECT * FROM users
-    const users = await User.findAll();
+    const users = await User.findAll({
+      limit,
+      offset, 
+      order: [['id', 'ASC']]});
 
-    console.log(users);
+    // console.log(users);
 
     res.send({ data: users });
 
