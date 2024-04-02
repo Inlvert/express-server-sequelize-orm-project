@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Task, {
         foreignKey: 'userId'
+      });
+
+      User.belongsToMany(models.Group, {
+        through: 'users_to_grops',
+        foreignKey: 'userId'
       })
     }
   }
